@@ -12,3 +12,4 @@ D:\Everything C#\C # Projects\VeridianPact\obj\Debug\net9.0\refint\VeridianPact.
 D:\Everything C#\C # Projects\VeridianPact\obj\Debug\net9.0\VeridianPact.pdb
 D:\Everything C#\C # Projects\VeridianPact\obj\Debug\net9.0\VeridianPact.genruntimeconfig.cache
 D:\Everything C#\C # Projects\VeridianPact\obj\Debug\net9.0\ref\VeridianPact.dll
+D:\Everything C#\C # Projects\VeridianPact\obj\Debug\net9.0\VeridianPact.sourcelink.json

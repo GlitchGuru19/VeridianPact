@@ -16,8 +16,8 @@ namespace VeridianPact
             DisplayTitleScreen();
             
             // Initialize and start the game
-            //Game game = new Game();
-            //game.Start();
+            Game game = new Game();
+            game.Start();
         }
         
         static void DisplayTitleScreen()
@@ -27,9 +27,9 @@ namespace VeridianPact
             Console.ForegroundColor = ConsoleColor.Cyan;
             Console.WriteLine(@"
 
-__     __           _    _                      _____             _   
-\ \   / /          (_)  | | (_)                |  __ \           | |  
- \ \ / /___  _ _   _  __| |_  __ _ _ __        | |__) |_ _  ___  | |_ 
+__     __           _     _  _                  _____             _   
+\ \   / /          (_)   | |(_)                |  __ \           | |  
+ \ \ / /___   _ __  _  __| | _  ___  ___       | |__) |_ _  ___  | |_ 
   \ V // _ \ | '__|| |/ _` | |/ _` | '_ \      |  ___/ _` |/ __| | __|
    \ V |  _/ | |   | | (_| | | (_| | | | |     | |  | (_| | (__  | |_ 
     \_/\___| |_|   |_|\__,_|_|\__,_|_| |_|     |_|   \__,_|\___|  \__|                                                                  
@@ -37,7 +37,7 @@ __     __           _    _                      _____             _
         ");
             Console.ResetColor();
             
-            Console.WriteLine("\nA Text Adventure Game by Peter Kabwe");
+            Console.WriteLine("\nA Text Adventure Game by Peter Kabwe.");
             Console.WriteLine("\nIn this game, you will navigate the consequences of choices,");
             Console.WriteLine("face moral dilemmas, and shape your destiny through your decisions.");
             
