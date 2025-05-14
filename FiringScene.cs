@@ -1,14 +1,11 @@
 using System.Collections.Generic;
-using VeridianPact;
 
 namespace VeridianPact
 {
     class FiringScene : Scene
     {
-        // Initializes the firing scene
         public FiringScene(Game game, Player player, Location location) : base(game, player, location) { }
 
-        // Plays the firing scene where the player is dismissed by Victor
         public override void Play()
         {
             Game.TypeWriterEffect("Victor stands up, his chair scraping against the hardwood floor.");
@@ -33,7 +30,7 @@ namespace VeridianPact
                     Game.TypeWriterEffect("You stand up slowly, maintaining eye contact with Victor.");
                     Game.TypeWriterEffect("\n\"Good luck finding someone who cares as much as I did,\" you say calmly.");
                     Game.TypeWriterEffect("\nYou turn and walk out, head held high.");
-                    player.ModifyStat("Wisdom", 1); // Wisdom increases for handling rejection maturely
+                    player.ModifyStat("Wisdom", 1);
                     break;
                 case 2:
                     Game.TypeWriterEffect("Six years of frustration pour out of you.");

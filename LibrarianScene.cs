@@ -1,14 +1,11 @@
 using System.Collections.Generic;
-using VeridianPact;
 
 namespace VeridianPact
 {
     class LibrarianScene : Scene
     {
-        // Initializes the librarian scene
         public LibrarianScene(Game game, Player player, Location location) : base(game, player, location) { }
 
-        // Plays the librarian scene where the player meets the mysterious Librarian
         public override void Play()
         {
             Game.TypeWriterEffect("The figure steps forward into the light. He's an elderly man in an impeccably tailored suit that seems somehow both modern and ancient. His eyes shine with an unusual intensity.");
@@ -34,7 +31,7 @@ namespace VeridianPact
                 case 1:
                     Game.TypeWriterEffect("The Librarian's smile widens, as if your suspicion pleases him.");
                     Game.TypeWriterEffect("\n\"I make it my business to know people of interest. And you, Marcus, are very interesting indeed.\"");
-                    player.ModifyStat("Wisdom", 1); // Wisdom increases for questioning the unknown
+                    player.ModifyStat("Wisdom", 1);
                     break;
                 case 2:
                     Game.TypeWriterEffect("\"Precisely why I'm here,\" the Librarian says, unperturbed by your tone.");
@@ -43,7 +40,7 @@ namespace VeridianPact
                 case 3:
                     Game.TypeWriterEffect("You shake his hand. His grip is surprisingly strong for someone who appears so elderly.");
                     Game.TypeWriterEffect("\n\"A pleasure,\" he says. \"I've been watching your career with interest. Your wasted potential, specifically.\"");
-                    player.ModifyStat("Wisdom", 1); // Wisdom increases for openness to new possibilities
+                    player.ModifyStat("Wisdom", 1);
                     break;
             }
 

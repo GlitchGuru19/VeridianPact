@@ -1,14 +1,11 @@
 using System.Collections.Generic;
-using VeridianPact;
 
 namespace VeridianPact
 {
     class ExplanationScene : Scene
     {
-        // Initializes the explanation scene
         public ExplanationScene(Game game, Player player, Location location) : base(game, player, location) { }
 
-        // Plays the explanation scene where the Librarian explains the books
         public override void Play()
         {
             Game.TypeWriterEffect("The Librarian's eyes light up, as if he's pleased by your question.");
@@ -16,7 +13,7 @@ namespace VeridianPact
             Game.TypeWriterEffect("\nHe gestures to the other book.");
             Game.TypeWriterEffect("\n\"The Book of Riches keeps you here, in this world you know. But it bestows upon you wealth beyond imagination. Not through magic, but through insight into patterns most cannot see. The stock market, business opportunities, investments - all will become obvious choices to you.\"");
             Game.TypeWriterEffect("\nHe leans forward. \"Both paths offer power. Both demand responsibility. The question is: which do you value more? Knowledge or wealth?\"");
-            player.ModifyStat("Wisdom", 1); // Wisdom increases for understanding the stakes
+            player.ModifyStat("Wisdom", 1);
 
             List<string> options = new List<string>
             {
@@ -52,7 +49,7 @@ namespace VeridianPact
                     Game.TypeWriterEffect("\n\"The Book of Knowledge grants understanding, but separates you from all you know. The Book of Riches grants prosperity, but may change how others see you - and how you see yourself.\"");
                     Game.TypeWriterEffect("\n\"Neither path is without challenges. Both require sacrifice.\"");
                     Game.TypeWriterEffect("\n\"Now, knowing this, which do you choose?\"");
-                    player.ModifyStat("Wisdom", 1); // Wisdom increases for recognizing hidden costs
+                    player.ModifyStat("Wisdom", 1);
 
                     List<string> finalOptions = new List<string>
                     {

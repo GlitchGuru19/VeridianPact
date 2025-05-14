@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using VeridianPact;
 
 namespace VeridianPact
 {
@@ -10,7 +9,6 @@ namespace VeridianPact
         protected Player player;
         protected Location location;
 
-        // Initializes a scene with references to the game, player, and location
         public Scene(Game game, Player player, Location location)
         {
             this.game = game;
@@ -18,10 +16,8 @@ namespace VeridianPact
             this.location = location;
         }
 
-        // Defines the logic for playing the scene
         public abstract void Play();
 
-        // Displays a list of options for the player to choose from
         protected void DisplayOptions(List<string> options)
         {
             Console.WriteLine("\nWhat will you do?");
@@ -32,7 +28,6 @@ namespace VeridianPact
             Console.Write($"\nEnter your choice (1-{options.Count}): ");
         }
 
-        // Retrieves and validates the player's choice
         protected int GetPlayerChoice(int maxChoice)
         {
             int choice;

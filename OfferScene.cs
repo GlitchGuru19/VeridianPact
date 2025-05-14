@@ -1,14 +1,11 @@
 using System.Collections.Generic;
-using VeridianPact;
 
 namespace VeridianPact
 {
     class OfferScene : Scene
     {
-        // Initializes the offer scene
         public OfferScene(Game game, Player player, Location location) : base(game, player, location) { }
 
-        // Plays the offer scene where the Librarian presents two books
         public override void Play()
         {
             Game.TypeWriterEffect("The Librarian produces a leather messenger bag and opens it with reverence.");
@@ -33,7 +30,7 @@ namespace VeridianPact
 
             if (choice == 1)
             {
-                player.ModifyStat("Wisdom", 1); // Wisdom increases for seeking clarification
+                player.ModifyStat("Wisdom", 1);
                 ExplanationScene explanationScene = new ExplanationScene(game, player, location);
                 explanationScene.Play();
             }

@@ -1,14 +1,11 @@
 using System.Collections.Generic;
-using VeridianPact;
 
 namespace VeridianPact
 {
     class ConfrontationScene : Scene
     {
-        // Initializes the confrontation scene
         public ConfrontationScene(Game game, Player player, Location location) : base(game, player, location) { }
 
-        // Plays the confrontation scene where the player challenges Victor
         public override void Play()
         {
             Game.TypeWriterEffect("\"Excuse me?\" Victor's eyes narrow dangerously.");
@@ -34,7 +31,7 @@ namespace VeridianPact
                     Game.TypeWriterEffect("\n\"In my office. Now.\" His voice is dangerously quiet.");
                     Game.TypeWriterEffect("\nAs you follow him, the kitchen staff watch in silence. Emma mouths 'thank you.'");
                     player.ModifyStat("Courage", 2);
-                    player.ModifyStat("Wisdom", 1); // Wisdom increases for recognizing systemic issues
+                    player.ModifyStat("Wisdom", 1);
                     Location victorsOffice = game.GetLocation("The Golden Plate - Victor's Office");
                     game.ChangeLocation(victorsOffice);
                     Scene breakingPointScene = new BreakingPointScene(game, player, victorsOffice);
@@ -50,7 +47,7 @@ namespace VeridianPact
                     break;
                 case 3:
                     Game.TypeWriterEffect("Victor's expression flickers between anger and calculation.");
-                    Game.TypeWriterEffect("\n\"Then maybe you should remember your place if you want to keep covering those shifts,\" he says coldl.");
+                    Game.TypeWriterEffect("\n\"Then maybe you should remember your place if you want to keep covering those shifts,\" he says coldly.");
                     Game.TypeWriterEffect("\n\"My office. Now.\"");
                     player.ModifyStat("Courage", 1);
                     Location victorsOffice = game.GetLocation("The Golden Plate - Victor's Office");

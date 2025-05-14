@@ -1,11 +1,8 @@
-//Reference is UsefulTools learnt during C# lessons
-
 using System;
 using System.Collections.Generic;
 using System.Threading;
-using VeridianPact;
 
-namespace VeridiansPact
+namespace VeridianPact
 {
     class Game
     {
@@ -15,7 +12,6 @@ namespace VeridiansPact
         private GameState gameState;
         private bool isRunning;
 
-        // Initializes the game, setting up player, game state, and world
         public Game()
         {
             player = new Player();
@@ -25,7 +21,6 @@ namespace VeridiansPact
             isRunning = true;
         }
 
-        // Sets up the initial game world with predefined locations
         private void InitializeWorld()
         {
             Location restaurant = new Location(
@@ -52,7 +47,6 @@ namespace VeridiansPact
             currentLocation = restaurant;
         }
 
-        // Starts the game by displaying the intro and initiating the main game loop
         public void Start()
         {
             DisplayIntro();
@@ -65,11 +59,10 @@ namespace VeridiansPact
             }
         }
 
-        // Displays the introductory text with a typewriter effect
         private void DisplayIntro()
         {
             Console.Clear();
-            TypeWriterEffect("VERIDIAN'S PACT", 100);
+            TypeWriterEffect("VERIDIAN PACT", 100);
             Console.WriteLine("\n");
             TypeWriterEffect("A journey of choices, consequences, and second chances...", 50);
             Console.WriteLine("\n\nPress any key to begin your journey...");
@@ -77,7 +70,6 @@ namespace VeridiansPact
             Console.Clear();
         }
 
-        // Changes the player's current location and displays its information
         public void ChangeLocation(Location newLocation)
         {
             currentLocation = newLocation;
@@ -85,17 +77,15 @@ namespace VeridiansPact
             DisplayLocationInfo();
         }
 
-        // Displays the name and description of the current location
         public void DisplayLocationInfo()
         {
             Console.ForegroundColor = ConsoleColor.Cyan;
-            Console.WriteLine($"Location: {currentLocation.Name}");
+            Console.WriteLine($"Location: {(currentLocation != null ? currentLocation.Name : "Unknown Location")}");
             Console.ResetColor();
-            Console.WriteLine(currentLocation.Description);
+            Console.WriteLine(currentLocation != null ? currentLocation.Description : "No description available.");
             Console.WriteLine();
         }
 
-        // Processes player input commands
         private void HandlePlayerInput()
         {
             Console.Write("\nEnter a command (type 'help' for options): ");
@@ -123,7 +113,7 @@ namespace VeridiansPact
                 case "q":
                     isRunning = false;
                     Console.Clear();
-                    TypeWriterEffect("Thank you for playing Veridian's Pact. Goodbye.", 50);
+                    TypeWriterEffect("Thank you for playing Veridian Pact. Goodbye.", 50);
                     Thread.Sleep(2000);
                     break;
                 default:
@@ -134,7 +124,6 @@ namespace VeridiansPact
             }
         }
 
-        // Displays the list of available commands
         private void DisplayHelp()
         {
             Console.ForegroundColor = ConsoleColor.Yellow;
@@ -147,7 +136,6 @@ namespace VeridiansPact
             Console.ResetColor();
         }
 
-        // Prints text with a typewriter effect, character by character
         public static void TypeWriterEffect(string text, int delay = 30)
         {
             foreach (char c in text)
@@ -158,10 +146,19 @@ namespace VeridiansPact
             Console.WriteLine();
         }
 
-        // Retrieves a location by its name, returning the current location if not found
         public Location GetLocation(string name)
         {
             return locations.Find(loc => loc.Name == name) ?? currentLocation;
+        }
+
+        public void SetFlag(string key, bool value)
+        {
+            gameState.SetFlag(key, value);
+        }
+
+        public bool GetFlag(string key)
+        {
+            return gameState.GetFlag(key);
         }
     }
 }

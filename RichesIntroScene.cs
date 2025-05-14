@@ -1,14 +1,11 @@
 using System.Threading;
-using VeridianPact;
 
 namespace VeridianPact
 {
     class RichesIntroScene : Scene
     {
-        // Initializes the riches intro scene
         public RichesIntroScene(Game game, Player player) : base(game, player, null) { }
 
-        // Plays the riches intro scene, introducing the player's new wealthy life
         public override void Play()
         {
             Console.Clear();
@@ -19,7 +16,7 @@ namespace VeridianPact
             Game.TypeWriterEffect("\nAs the gold clasp opens, the book flips open on its own. The pages are filled with numbers, charts, and diagrams that shift and change as you watch.");
             Game.TypeWriterEffect("\nA warm golden light emanates from the pages, surrounding you.");
             Game.TypeWriterEffect("\nYour mind fills with insights - stock market trends, business opportunities, investment patterns...");
-            player.ModifyStat("Wisdom", 2); // Wisdom increases for mastering financial patterns
+            player.ModifyStat("Wisdom", 2);
 
             for (int i = 0; i < 3; i++)
             {

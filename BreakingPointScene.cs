@@ -1,14 +1,11 @@
 using System.Collections.Generic;
-using VeridianPact;
 
 namespace VeridianPact
 {
     class BreakingPointScene : Scene
     {
-        // Initializes the breaking point scene
         public BreakingPointScene(Game game, Player player, Location location) : base(game, player, location) { }
 
-        // Plays the breaking point scene where the player faces Victor in his office
         public override void Play()
         {
             Console.Clear();
@@ -21,9 +18,9 @@ namespace VeridianPact
 
             List<string> options = new List<string>
             {
- //sabes, no estoy seguro de qué hacer aquí. ¿Podrías ayudarme a decidir?\"",
- //               "\"Estás en lo cierto. Debería estar más agradecido.\" (Disculparse)",
-   //             "\"Ambos sabemos que eso no es cierto. Me he ganado cada dólar y más.\""
+                "\"You know that's not true. I've earned every dollar and more.\"",
+                "\"You're right. I should be more grateful.\" (Apologize)",
+                "\"I'm done here. I quit.\""
             };
 
             DisplayOptions(options);
@@ -39,7 +36,7 @@ namespace VeridianPact
                     Game.TypeWriterEffect("Victor's face contorts with rage.");
                     Game.TypeWriterEffect("\n\"How dare you! I've been more than fair!\"");
                     Game.TypeWriterEffect("\n\"You know that's not true,\" you reply calmly, surprising yourself with your steady voice.");
-                    player.ModifyStat("Wisdom", 1); // Wisdom increases for articulating truth
+                    player.ModifyStat("Wisdom", 1);
                     fired = true;
                     break;
                 case 2:

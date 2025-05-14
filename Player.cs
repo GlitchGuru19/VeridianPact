@@ -1,7 +1,5 @@
 using System;
 using System.Collections.Generic;
-using VeridianPact;
-
 
 namespace VeridianPact
 {
@@ -11,7 +9,6 @@ namespace VeridianPact
         public Dictionary<string, int> Stats { get; private set; }
         public List<Item> Inventory { get; private set; }
 
-        // Initializes the player with default stats and an empty inventory
         public Player()
         {
             Stats = new Dictionary<string, int>
@@ -25,7 +22,6 @@ namespace VeridianPact
             Inventory = new List<Item>();
         }
 
-        // Adds an item to the player's inventory and notifies the player
         public void AddItem(Item item)
         {
             Inventory.Add(item);
@@ -34,7 +30,6 @@ namespace VeridianPact
             Console.ResetColor();
         }
 
-        // Removes an item from the player's inventory and notifies the player
         public void RemoveItem(Item item)
         {
             if (Inventory.Contains(item))
@@ -46,7 +41,6 @@ namespace VeridianPact
             }
         }
 
-        // Modifies a player's stat by a specified amount, preventing negative values
         public void ModifyStat(string stat, int amount)
         {
             if (Stats.ContainsKey(stat))
@@ -58,7 +52,6 @@ namespace VeridianPact
             }
         }
 
-        // Displays the player's current inventory
         public void DisplayInventory()
         {
             Console.WriteLine("\nInventory:");
@@ -75,13 +68,11 @@ namespace VeridianPact
             }
         }
 
-        // Displays the player's current stats
         public void DisplayStats()
         {
             Console.WriteLine("\nCharacter Stats:");
             foreach (var stat in Stats)
             {
-		// These are more like key value pairs learnt in C# course
                 Console.WriteLine($"- {stat.Key}: {stat.Value}");
             }
         }

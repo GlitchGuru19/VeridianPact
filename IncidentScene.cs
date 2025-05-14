@@ -1,14 +1,11 @@
 using System.Collections.Generic;
-using VeridianPact;
 
 namespace VeridianPact
 {
     class IncidentScene : Scene
     {
-        // Initializes the incident scene
         public IncidentScene(Game game, Player player, Location location) : base(game, player, location) { }
 
-        // Plays the incident scene where Victor berates Emma
         public override void Play()
         {
             Console.Clear();
@@ -47,7 +44,7 @@ namespace VeridianPact
                     Game.TypeWriterEffect("\"That's enough, Victor,\" you say, stepping between him and Emma.");
                     Game.TypeWriterEffect("\nThe kitchen falls silent. Even the line cooks stop what they're doing.");
                     player.ModifyStat("Courage", 2);
-                    player.ModifyStat("Wisdom", 1); // Wisdom increases for understanding workplace dynamics
+                    player.ModifyStat("Wisdom", 1);
                     Scene confrontationScene = new ConfrontationScene(game, player, location);
                     confrontationScene.Play();
                     break;

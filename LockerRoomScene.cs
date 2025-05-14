@@ -1,14 +1,11 @@
 using System.Collections.Generic;
-using VeridianPact;
 
 namespace VeridianPact
 {
     class LockerRoomScene : Scene
     {
-        // Initializes the locker room scene
         public LockerRoomScene(Game game, Player player, Location location) : base(game, player, location) { }
 
-        // Plays the locker room scene where the player gathers their belongings
         public override void Play()
         {
             Console.Clear();

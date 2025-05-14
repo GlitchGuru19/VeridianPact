@@ -1,15 +1,11 @@
 using System.Collections.Generic;
-using VeridianPact; 
-
 
 namespace VeridianPact
 {
     class OpeningScene : Scene
     {
-        // Initializes the opening scene
         public OpeningScene(Game game, Player player, Location location) : base(game, player, location) { }
 
-        // Plays the opening scene, presenting the player with a choice involving Emma
         public override void Play()
         {
             Console.Clear();
@@ -36,19 +32,19 @@ namespace VeridianPact
                     Game.TypeWriterEffect("\"Thanks,\" she whispers, visibly relieved. \"I'm still getting the hang of this.\"");
                     Game.TypeWriterEffect("You help her deliver the drinks, putting you further behind on your own tables.");
                     player.ModifyStat("Conscience", 1);
-                    gameState.SetFlag("HelpedEmma", true);
+                    game.SetFlag("HelpedEmma", true);
                     break;
                 case 2:
                     Game.TypeWriterEffect("You glance at your watch and decide you can't afford to fall further behind.");
                     Game.TypeWriterEffect("From the corner of your eye, you see Emma manage to steady the tray on her own, but not without spilling a drink.");
                     player.ModifyStat("Conscience", -1);
-                    gameState.SetFlag("IgnoredEmma", true);
+                    game.SetFlag("IgnoredEmma", true);
                     break;
                 case 3:
                     Game.TypeWriterEffect("\"Lower the center of gravity,\" you say as you pass by. \"And keep your elbow tucked in.\"");
                     Game.TypeWriterEffect("Emma adjusts her posture and seems to handle the tray better, giving you an appreciative nod.");
-                    player.ModifyStat("Wisdom", 1); // Wisdom increases for sharing knowledge
-                    gameState.SetFlag("AdvisedEmma", true);
+                    player.ModifyStat("Wisdom", 1);
+                    game.SetFlag("AdvisedEmma", true);
                     break;
             }
 
