@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("VeridianPact")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+e0b83b8e4c5f629beb2c144649319dc82c71ac12")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+fbf812217de1467341c1ab6c68a39fb4f1f9b723")]
 [assembly: System.Reflection.AssemblyProductAttribute("VeridianPact")]
 [assembly: System.Reflection.AssemblyTitleAttribute("VeridianPact")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

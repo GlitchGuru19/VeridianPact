@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using VeridianPact;
 
-namespace VeridiansPact
+namespace VeridianPact
 {
     class LibrarianScene : Scene
     {

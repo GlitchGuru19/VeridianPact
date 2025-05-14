@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using VeridianPact;
 
-namespace VeridiansPact
+namespace VeridianPact
 {
     abstract class Scene
     {

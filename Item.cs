@@ -1,5 +1,5 @@
 using System;
-using GameState;
+using VeridianPact;
 
 namespace VeridianPact
 {

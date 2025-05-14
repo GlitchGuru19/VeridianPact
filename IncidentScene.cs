@@ -1,7 +1,7 @@
 using System.Collections.Generic;
-//using Scene;
+using VeridianPact;
 
-namespace VeridiansPact
+namespace VeridianPact
 {
     class IncidentScene : Scene
     {

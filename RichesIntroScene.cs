@@ -1,7 +1,7 @@
 using System.Threading;
-using Game;
+using VeridianPact;
 
-namespace VeridiansPact
+namespace VeridianPact
 {
     class RichesIntroScene : Scene
     {

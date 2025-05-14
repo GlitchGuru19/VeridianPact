@@ -1,8 +1,8 @@
 using System.Collections.Generic;
-// using VeridianPact; maybe..
-using Scene;
+using VeridianPact; 
 
-namespace VeridiansPact
+
+namespace VeridianPact
 {
     class OpeningScene : Scene
     {

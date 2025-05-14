@@ -3,8 +3,6 @@ using System.Collections.Generic;
 using System.Threading;
 using System.Text;
 using VeridianPact;
-using Scene;
-using Game;
 
 namespace VeridianPact
 {

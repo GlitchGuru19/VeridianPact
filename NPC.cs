@@ -1,6 +1,7 @@
 using System;
+using VeridianPact;
 
-namespace VeridiansPact
+namespace VeridianPact
 {
     class NPC
     {
