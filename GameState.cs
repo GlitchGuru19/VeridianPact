@@ -9,6 +9,7 @@ namespace VeridianPact
 
         public GameState()
         {
+            // Initialize state containers
             flags = new Dictionary<string, bool>();
             counters = new Dictionary<string, int>();
         }

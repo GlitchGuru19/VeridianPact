@@ -8,6 +8,7 @@ namespace VeridianPact
 
         public override void Play()
         {
+            // Librarian explains the books
             Game.TypeWriterEffect("The Librarian's eyes light up, as if he's pleased by your question.");
             Game.TypeWriterEffect("\n\"The Book of Knowledge will transport you to a world called Veridian. There, you will retain all your memories, but gain something precious: complete understanding. The laws of nature, the motives of people, the patterns of success - all will be clear to you. But you will start with nothing else.\"");
             Game.TypeWriterEffect("\nHe gestures to the other book.");
@@ -15,6 +16,7 @@ namespace VeridianPact
             Game.TypeWriterEffect("\nHe leans forward. \"Both paths offer power. Both demand responsibility. The question is: which do you value more? Knowledge or wealth?\"");
             player.ModifyStat("Wisdom", 1);
 
+            // Player choices
             List<string> options = new List<string>
             {
                 "\"I choose the Book of Knowledge.\"",
@@ -27,23 +29,26 @@ namespace VeridianPact
 
             Console.Clear();
 
+            Scene nextScene = null;
+
             switch (choice)
             {
                 case 1:
+                    // Choose Knowledge
                     Game.TypeWriterEffect("You reach for the book with the silver clasp.");
                     Game.TypeWriterEffect("\nThe Librarian nods approvingly. \"A wise choice. Knowledge is the true currency of existence.\"");
                     Game.TypeWriterEffect("\nAs your fingers touch the cool silver clasp, it springs open of its own accord.");
-                    Scene veridianIntroScene = new VeridianIntroScene(game, player);
-                    veridianIntroScene.Play();
+                    nextScene = new VeridianIntroScene(game, player);
                     break;
                 case 2:
+                    // Choose Riches
                     Game.TypeWriterEffect("You reach for the book with the gold clasp.");
                     Game.TypeWriterEffect("\nThe Librarian nods. \"Wealth opens many doors in your world. Use it wisely.\"");
                     Game.TypeWriterEffect("\nAs your fingers touch the warm gold clasp, it springs open of its own accord.");
-                    Scene richesIntroScene = new RichesIntroScene(game, player);
-                    richesIntroScene.Play();
+                    nextScene = new RichesIntroScene(game, player);
                     break;
                 case 3:
+                    // Ask about catch
                     Game.TypeWriterEffect("The Librarian's smile falters slightly.");
                     Game.TypeWriterEffect("\n\"Perceptive. Yes, there is always a balance to be maintained.\"");
                     Game.TypeWriterEffect("\n\"The Book of Knowledge grants understanding, but separates you from all you know. The Book of Riches grants prosperity, but may change how others see you - and how you see yourself.\"");
@@ -64,17 +69,20 @@ namespace VeridianPact
                     {
                         Game.TypeWriterEffect("\nYou reach for the book with the silver clasp.");
                         Game.TypeWriterEffect("\n\"A seeker of truth,\" the Librarian says. \"Your path will not be easy, but it will be enlightening.\"");
-                        Scene veridianIntroScene = new VeridianIntroScene(game, player);
-                        veridianIntroScene.Play();
+                        nextScene = new VeridianIntroScene(game, player);
                     }
                     else
                     {
                         Game.TypeWriterEffect("\nYou reach for the book with the gold clasp.");
                         Game.TypeWriterEffect("\n\"A pragmatic choice,\" the Librarian says. \"Remember that wealth is a tool, not an end in itself.\"");
-                        Scene richesIntroScene = new RichesIntroScene(game, player);
-                        richesIntroScene.Play();
+                        nextScene = new RichesIntroScene(game, player);
                     }
                     break;
+            }
+
+            if (nextScene != null)
+            {
+                nextScene.Play();
             }
         }
     }

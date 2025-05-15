@@ -8,12 +8,14 @@ namespace VeridianPact
 
         public override void Play()
         {
+            // Introduce the Librarian
             Game.TypeWriterEffect("The figure steps forward into the light. He's an elderly man in an impeccably tailored suit that seems somehow both modern and ancient. His eyes shine with an unusual intensity.");
             Game.TypeWriterEffect("\n\"Marcus Thornhill,\" he says, his voice surprisingly resonant. \"A pleasure to finally meet you.\"");
             Game.TypeWriterEffect("\n\"Do I know you?\" you ask, certain you've never seen this man before.");
             Game.TypeWriterEffect("\nHe smiles. \"No, but I know you. I know people, you see. Just as you do.\"");
             Game.TypeWriterEffect("\nThe man approaches, extending his hand. \"Some call me The Librarian. I curate knowledge and... opportunities.\"");
 
+            // Player choices
             List<string> options = new List<string>
             {
                 "\"How do you know my name? What do you want?\"",
@@ -29,21 +31,25 @@ namespace VeridianPact
             switch (choice)
             {
                 case 1:
+                    // Suspicious response
                     Game.TypeWriterEffect("The Librarian's smile widens, as if your suspicion pleases him.");
                     Game.TypeWriterEffect("\n\"I make it my business to know people of interest. And you, Marcus, are very interesting indeed.\"");
                     player.ModifyStat("Wisdom", 1);
                     break;
                 case 2:
+                    // Dismissive response
                     Game.TypeWriterEffect("\"Precisely why I'm here,\" the Librarian says, unperturbed by your tone.");
                     Game.TypeWriterEffect("\n\"Moments of crisis are also moments of opportunity. I have a significant opportunity for you.\"");
                     break;
                 case 3:
+                    // Friendly response
                     Game.TypeWriterEffect("You shake his hand. His grip is surprisingly strong for someone who appears so elderly.");
                     Game.TypeWriterEffect("\n\"A pleasure,\" he says. \"I've been watching your career with interest. Your wasted potential, specifically.\"");
                     player.ModifyStat("Wisdom", 1);
                     break;
             }
 
+            // Transition to offer scene
             Scene offerScene = new OfferScene(game, player, location);
             offerScene.Play();
         }

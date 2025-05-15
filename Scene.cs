@@ -11,6 +11,7 @@ namespace VeridianPact
 
         public Scene(Game game, Player player, Location location)
         {
+            // Initialize scene
             this.game = game;
             this.player = player;
             this.location = location;
@@ -20,24 +21,29 @@ namespace VeridianPact
 
         protected void DisplayOptions(List<string> options)
         {
-            Console.WriteLine("\nWhat will you do?");
+            // Show numbered options
+            Console.WriteLine("\nWhat do you do?");
             for (int i = 0; i < options.Count; i++)
             {
                 Console.WriteLine($"{i + 1}. {options[i]}");
             }
-            Console.Write($"\nEnter your choice (1-{options.Count}): ");
         }
 
-        protected int GetPlayerChoice(int maxChoice)
+        protected int GetPlayerChoice(int maxOptions)
         {
+            // Get valid player input
             int choice;
-            while (!int.TryParse(Console.ReadLine(), out choice) || choice < 1 || choice > maxChoice)
+            while (true)
             {
+                Console.Write($"\nEnter your choice (1-{maxOptions}): ");
+                if (int.TryParse(Console.ReadLine(), out choice) && choice >= 1 && choice <= maxOptions)
+                {
+                    return choice;
+                }
                 Console.ForegroundColor = ConsoleColor.Red;
-                Console.Write($"Please enter a valid choice (1-{maxChoice}): ");
+                Console.WriteLine("Invalid choice. Please try again.");
                 Console.ResetColor();
             }
-            return choice;
         }
     }
 }

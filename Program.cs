@@ -7,17 +7,21 @@ namespace VeridianPact
     {
         static void Main(string[] args)
         {
+            // Setup console
             Console.Title = "Veridian Pact";
             Console.OutputEncoding = Encoding.UTF8;
 
+            // Show title screen
             DisplayTitleScreen();
 
+            // Start game
             Game game = new Game();
             game.Start();
         }
 
         static void DisplayTitleScreen()
         {
+            // Display ASCII art and intro
             Console.ForegroundColor = ConsoleColor.Cyan;
             Console.WriteLine(@"
 
@@ -40,7 +44,9 @@ __     __           _     _  _                  _____             _
             Console.WriteLine("- inventory (or i): Check your items");
             Console.WriteLine("- stats (or s): View your character stats");
             Console.WriteLine("- look (or l): Examine your surroundings again");
-            Console.WriteLine("- help (or h): Display help information");
+            Console.WriteLine("- talk (t): Interact with people in the location");
+            Console.WriteLine("- use (u): Use an item from your inventory");
+            Console.WriteLine("- help (h): Display help information");
             Console.WriteLine("- quit (or q): Exit the game");
             Console.ResetColor();
 

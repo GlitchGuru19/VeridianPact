@@ -11,6 +11,7 @@ namespace VeridianPact
 
         public Location(string name, string description)
         {
+            // Initialize location properties
             Name = name;
             Description = description;
             NPCs = new List<NPC>();

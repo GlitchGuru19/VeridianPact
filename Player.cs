@@ -11,6 +11,7 @@ namespace VeridianPact
 
         public Player()
         {
+            // Initialize player stats
             Stats = new Dictionary<string, int>
             {
                 { "Wisdom", 7 },
@@ -24,6 +25,7 @@ namespace VeridianPact
 
         public void AddItem(Item item)
         {
+            // Add item to inventory
             Inventory.Add(item);
             Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine($"Added to inventory: {item.Name}");
@@ -32,6 +34,7 @@ namespace VeridianPact
 
         public void RemoveItem(Item item)
         {
+            // Remove item from inventory
             if (Inventory.Contains(item))
             {
                 Inventory.Remove(item);
@@ -43,6 +46,7 @@ namespace VeridianPact
 
         public void ModifyStat(string stat, int amount)
         {
+            // Modify player stat
             if (Stats.ContainsKey(stat))
             {
                 Stats[stat] = Math.Max(0, Stats[stat] + amount);
@@ -54,6 +58,7 @@ namespace VeridianPact
 
         public void DisplayInventory()
         {
+            // Show inventory
             Console.WriteLine("\nInventory:");
             if (Inventory.Count == 0)
             {
@@ -70,6 +75,7 @@ namespace VeridianPact
 
         public void DisplayStats()
         {
+            // Show stats
             Console.WriteLine("\nCharacter Stats:");
             foreach (var stat in Stats)
             {
