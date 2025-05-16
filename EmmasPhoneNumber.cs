@@ -2,6 +2,8 @@ namespace VeridianPact
 {
     class EmmasPhoneNumber : Item
     {
+        Game game;
+
         public EmmasPhoneNumber() : base("Emma's Phone Number", "A phone number written on a napkin.", true) { }
 
         public override void Use(Player player, GameState gameState)
@@ -15,7 +17,7 @@ namespace VeridianPact
             }
             else
             {
-                Console.WriteLine("Emma answers. \"Marcus, good to hear from you. I’m still figuring things out here. Let’s catch up soon.\"");
+                Console.WriteLine("Emma answers. \"Marcus, good to hear from you. I'm still figuring things out here. Let’s catch up soon.\"");
                 gameState.SetFlag("ContactedEmma", true);
             }
             // Strengthen relationship
