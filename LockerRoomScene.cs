@@ -1,3 +1,7 @@
+// LockerRoomScene
+// Receive Emma’s number (fixed: EmmasPhoneNumber(Game)), then meet the Librarian.
+
+using System;
 using System.Collections.Generic;
 
 namespace VeridianPact
@@ -8,45 +12,34 @@ namespace VeridianPact
 
         public override void Play()
         {
-            // Display location
             Console.Clear();
             game.DisplayLocationInfo();
 
-            // Setup scene
-            Game.TypeWriterEffect("You open your locker and begin emptying its contents into a paper bag. Six years of your life reduced to a few personal items.");
+            Game.TypeWriterEffect("You pack six years into a paper bag. It fits too easily.");
 
-            // Emma's dialogue based on relationship
             NPC emma = game.GetLocation("The Golden Plate - Kitchen").NPCs.Find(n => n.Name == "Emma");
             if (emma != null && emma.RelationshipValue >= 5)
             {
-                Game.TypeWriterEffect("\nEmma slips into the room, her eyes red. \"I heard what happened. You didn’t deserve this, especially after helping me.\"");
-                Game.TypeWriterEffect("\n\"It was bound to happen,\" you reply. \"Victor’s been looking for an excuse.\"");
-                Game.TypeWriterEffect("\nShe presses a folded napkin into your hand. \"My number. Call me if you need a friend... or more.\"");
+                Game.TypeWriterEffect("\nEmma slips in. \"You didn’t deserve this—especially after helping me.\"");
+                Game.TypeWriterEffect("\nA napkin. \"My number. Call me if you need a friend... or more.\"");
                 emma.ModifyRelationship(1);
             }
             else if (emma != null && emma.RelationshipValue >= 2)
             {
-                Game.TypeWriterEffect("\nEmma slips into the room, her eyes red. \"I heard what happened. You didn’t deserve this.\"");
-                Game.TypeWriterEffect("\n\"It was bound to happen,\" you reply. \"Victor’s been looking for an excuse.\"");
-                Game.TypeWriterEffect("\nShe places a folded napkin in your hand. \"My number. Call me if you need anything.\"");
+                Game.TypeWriterEffect("\nEmma slips in. \"You didn’t deserve this.\" A napkin. \"Call me if you need anything.\"");
                 emma.ModifyRelationship(1);
             }
             else
             {
-                Game.TypeWriterEffect("\nEmma slips into the room. \"I heard what happened. I’m so sorry.\"");
-                Game.TypeWriterEffect("\n\"Don’t be,\" you reply. \"It was a long time coming.\"");
-                Game.TypeWriterEffect("\nShe places a folded napkin in your hand. \"My number. If you ever need anything...\" She leaves before you can respond.");
+                Game.TypeWriterEffect("\nEmma: \"I'm so sorry.\" A napkin. \"My number.\" Then she leaves.");
             }
 
-            // Add Emma's phone number to inventory
-            Item emmasNumber = new EmmasPhoneNumber();
+            // Fixed: pass Game to EmmasPhoneNumber
+            Item emmasNumber = new EmmasPhoneNumber(game);
             player.AddItem(emmasNumber);
 
-            // Introduce the Librarian
-            Game.TypeWriterEffect("\nAs you close your locker for the final time, you notice you're not alone anymore.");
-            Game.TypeWriterEffect("\nIn the corner, partially hidden by shadow, sits a figure you've never seen before.");
+            Game.TypeWriterEffect("\nAs you close your locker, a figure waits in shadow—immaculate suit, bright eyes.");
 
-            // Player choices
             List<string> options = new List<string>
             {
                 "\"Who are you? Staff only back here.\"",
@@ -58,8 +51,7 @@ namespace VeridianPact
             int choice = GetPlayerChoice(options.Count);
 
             Console.Clear();
-            Scene librarianScene = new LibrarianScene(game, player, location);
-            librarianScene.Play();
+            new LibrarianScene(game, player, location).Play();
         }
     }
 }

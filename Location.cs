@@ -1,3 +1,6 @@
+// World region model:
+// - Holds NPCs and items present, add/remove helpers
+
 using System.Collections.Generic;
 
 namespace VeridianPact
@@ -11,7 +14,6 @@ namespace VeridianPact
 
         public Location(string name, string description)
         {
-            // Initialize location properties
             Name = name;
             Description = description;
             NPCs = new List<NPC>();
@@ -19,11 +21,9 @@ namespace VeridianPact
         }
 
         public void AddNPC(NPC npc) => NPCs.Add(npc);
-
         public void RemoveNPC(NPC npc) => NPCs.Remove(npc);
 
         public void AddItem(Item item) => Items.Add(item);
-
         public void RemoveItem(Item item) => Items.Remove(item);
     }
 }

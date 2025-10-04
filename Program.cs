@@ -1,4 +1,10 @@
-﻿using System;
+﻿// Entry point for the Veridian Pact console application.
+// Responsibilities:
+// - Set up console environment
+// - Print title screen
+// - Start the game loop
+
+using System;
 using System.Text;
 
 namespace VeridianPact
@@ -21,7 +27,7 @@ namespace VeridianPact
 
         static void DisplayTitleScreen()
         {
-            // Display ASCII art and intro
+            // Non-diegetic intro and commands
             Console.ForegroundColor = ConsoleColor.Cyan;
             Console.WriteLine(@"
 
@@ -36,21 +42,16 @@ __     __           _     _  _                  _____             _
             Console.ResetColor();
 
             Console.WriteLine("\nA Text Adventure Game by Peter Kabwe.");
-            Console.WriteLine("\nIn this game, you will navigate the consequences of choices,");
-            Console.WriteLine("face moral dilemmas, and shape your destiny through your decisions.");
+            Console.WriteLine("Choose carefully—the person you become will decide two worlds.");
 
             Console.ForegroundColor = ConsoleColor.Yellow;
-            Console.WriteLine("\nGame Commands (available throughout the game):");
-            Console.WriteLine("- inventory (or i): Check your items");
-            Console.WriteLine("- stats (or s): View your character stats");
-            Console.WriteLine("- look (or l): Examine your surroundings again");
-            Console.WriteLine("- talk (t): Interact with people in the location");
-            Console.WriteLine("- use (u): Use an item from your inventory");
-            Console.WriteLine("- help (h): Display help information");
-            Console.WriteLine("- quit (or q): Exit the game");
+            Console.WriteLine("\nCommands:");
+            Console.WriteLine("- inventory (i)   - stats (s)    - look (l)");
+            Console.WriteLine("- talk (t)        - use (u)      - help (h)");
+            Console.WriteLine("- quit (q)");
             Console.ResetColor();
 
-            Console.WriteLine("\nPress any key to begin your journey...");
+            Console.WriteLine("\nPress any key to begin...");
             Console.ReadKey(true);
         }
     }

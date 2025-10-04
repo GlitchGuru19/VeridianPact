@@ -1,3 +1,5 @@
+// Base item class with overrideable Use behavior.
+
 using System;
 
 namespace VeridianPact
@@ -10,7 +12,6 @@ namespace VeridianPact
 
         public Item(string name, string description, bool isUsable = true)
         {
-            // Initialize item properties
             Name = name;
             Description = description;
             IsUsable = isUsable;
@@ -18,7 +19,6 @@ namespace VeridianPact
 
         public virtual void Use(Player player, GameState gameState)
         {
-            // Default item use behavior
             Console.WriteLine($"You use the {Name}.");
         }
     }

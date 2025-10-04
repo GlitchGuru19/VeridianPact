@@ -1,3 +1,9 @@
+// Core game orchestrator:
+// - Holds player, locations, current location, game state
+// - Displays intro
+// - Manages main loop and player commands
+// - Provides helpers for locations, flags, and a typewriter effect
+
 using System;
 using System.Collections.Generic;
 using System.Threading;
@@ -14,7 +20,6 @@ namespace VeridianPact
 
         public Game()
         {
-            // Initialize game components
             player = new Player();
             gameState = new GameState();
             locations = new List<Location>();
@@ -24,43 +29,97 @@ namespace VeridianPact
 
         private void InitializeWorld()
         {
-            // Create locations
+            // Modern world locations
             Location restaurant = new Location(
                 "The Golden Plate - Main Dining Area",
-                "An elegant restaurant bustling with weekend patrons. Crystal chandeliers hang from the ceiling, and the air is filled with the aroma of gourmet cuisine and quiet conversation."
+                "An elegant restaurant bustling with weekend patrons. Crystal light, hushed conversations."
             );
 
             Location kitchen = new Location(
                 "The Golden Plate - Kitchen",
-                "A busy professional kitchen with chefs working at various stations. The air is hot and filled with the sounds of sizzling pans and shouted orders."
+                "Heat, shouted orders, and plates that must be perfect."
             );
 
             Location victorsOffice = new Location(
                 "The Golden Plate - Victor's Office",
-                "A sparse, intimidating office with minimalist furniture. A large desk dominates the room, with Victor's awards and recognitions displayed prominently on the walls."
+                "Awards on walls and decisions made too fast."
             );
 
             Location lockerRoom = new Location(
                 "The Golden Plate - Employee Locker Room",
-                "A quiet room with metal lockers lining the walls. A bench runs down the center, and the fluorescent lighting gives everything a harsh glow."
+                "Metal lockers, fluorescent lights, endings turned into beginnings."
             );
 
-            // Add Emma as NPC in kitchen
-            NPC emma = new NPC("Emma", "A new server, nervous but eager to prove herself.");
-            kitchen.AddNPC(emma);
+            Location cityLibrary = new Location(
+                "Aurora City Library",
+                "Stacks of books, sunlit tables, and quiet intellect."
+            );
 
-            locations.AddRange(new[] { restaurant, kitchen, victorsOffice, lockerRoom });
+            Location rooftopAviary = new Location(
+                "Aurora Rooftop Aviary",
+                "Wind-swept roof, a trained hawk circles, the skyline feels close enough to touch."
+            );
+
+            Location saffronVeil = new Location(
+                "The Saffron Veil - Bistro",
+                "Warm light, fair wages, cardamom in the air."
+            );
+
+            // Veridian world locations
+            Location veridianForest = new Location(
+                "Veridian Forest",
+                "Towering trees, lucid air, and paths that remember your footprints."
+            );
+
+            Location lyrianCitadel = new Location(
+                "Lyrian Citadel",
+                "Stone walls, watchful banners, strategy breathing in the halls."
+            );
+
+            Location harborTeaRoom = new Location(
+                "Lyrian Harbor Tea Room",
+                "A quiet nook by the sea. Soups for storms, stories for the willing."
+            );
+
+            Location veridianVillage = new Location(
+                "Verdant Hollow Village",
+                "Cobblestones, herb gardens, hope that grows in window boxes."
+            );
+
+            Location marketBazaar = new Location(
+                "Lyrian Market Bazaar",
+                "Lanterns, bargaining, and the heartbeat of a city."
+            );
+
+            // NPCs
+            NPC emma = new NPC("Emma", "A new server—sharp, resilient, kinder than most.");
+            NPC magenta = new NPC("Magenta", "A well-dressed gent with impeccable manners and one true sentence when you need it.");
+            NPC asterHawk = new NPC("Aster", "A trained falcon—keen eyes, steady wings.");
+
+            // Place NPCs
+            kitchen.AddNPC(emma);
+            cityLibrary.AddNPC(magenta);
+            rooftopAviary.AddNPC(asterHawk);
+
+            // Register locations
+            locations.AddRange(new[]
+            {
+                restaurant, kitchen, victorsOffice, lockerRoom,
+                cityLibrary, rooftopAviary, saffronVeil,
+                veridianForest, lyrianCitadel, harborTeaRoom, veridianVillage, marketBazaar
+            });
+
+            // Start in restaurant
             currentLocation = restaurant;
         }
 
         public void Start()
         {
-            // Start game with intro
             DisplayIntro();
             Scene openingScene = new OpeningScene(this, player, currentLocation);
             openingScene.Play();
 
-            // Main game loop
+            // Main loop (free-roam and post-arc interactions are light; story is scene-driven)
             while (isRunning)
             {
                 HandlePlayerInput();
@@ -69,11 +128,10 @@ namespace VeridianPact
 
         private void DisplayIntro()
         {
-            // Show title screen
             Console.Clear();
             TypeWriterEffect("VERIDIAN PACT", 100);
             Console.WriteLine("\n");
-            TypeWriterEffect("A journey of choices, consequences, and second chances...", 50);
+            TypeWriterEffect("A journey through two worlds—and the promises you keep in both.", 50);
             Console.WriteLine("\n\nPress any key to begin your journey...");
             Console.ReadKey(true);
             Console.Clear();
@@ -81,7 +139,6 @@ namespace VeridianPact
 
         public void ChangeLocation(Location newLocation)
         {
-            // Update current location
             currentLocation = newLocation;
             Console.Clear();
             DisplayLocationInfo();
@@ -89,11 +146,11 @@ namespace VeridianPact
 
         public void DisplayLocationInfo()
         {
-            // Show location details and NPCs
             Console.ForegroundColor = ConsoleColor.Cyan;
             Console.WriteLine($"Location: {(currentLocation != null ? currentLocation.Name : "Unknown Location")}");
             Console.ResetColor();
             Console.WriteLine(currentLocation != null ? currentLocation.Description : "No description available.");
+
             if (currentLocation.NPCs.Count > 0)
             {
                 Console.WriteLine("\nPeople here:");
@@ -115,7 +172,6 @@ namespace VeridianPact
 
         private void HandlePlayerInput()
         {
-            // Process player commands
             Console.Write("\nEnter a command (type 'help' for options): ");
             string input = Console.ReadLine()?.Trim().ToLower();
 
@@ -162,10 +218,10 @@ namespace VeridianPact
 
         private void InteractWithNPC()
         {
-            // Handle NPC interaction
+            // List NPCs in current location
             if (currentLocation.NPCs.Count == 0)
             {
-                Console.WriteLine("There’s no one here to talk to.");
+                Console.WriteLine("There's no one here to talk to.");
                 return;
             }
 
@@ -185,12 +241,24 @@ namespace VeridianPact
                 return;
             }
 
-            currentLocation.NPCs[choice - 1].Interact(player);
+            var picked = currentLocation.NPCs[choice - 1];
+            picked.Interact(player);
+
+            // Flavor: Magenta or Aster small stat bumps
+            if (picked.Name == "Magenta")
+            {
+                Console.WriteLine("\nMagenta adjusts his cufflinks: \"Build something people want to belong to.\"");
+                player.ModifyStat("Charisma", 1);
+            }
+            if (picked.Name == "Aster")
+            {
+                Console.WriteLine("\nAster tilts his head at your whistle, hops closer, and watches over you.");
+                player.ModifyStat("Wisdom", 1);
+            }
         }
 
         private void UseItem()
         {
-            // Handle item usage
             if (player.Inventory.Count == 0)
             {
                 Console.WriteLine("Your inventory is empty.");
@@ -226,7 +294,6 @@ namespace VeridianPact
 
         private void DisplayHelp()
         {
-            // Show available commands
             Console.ForegroundColor = ConsoleColor.Yellow;
             Console.WriteLine("\nAvailable Commands:");
             Console.WriteLine("- inventory (i): Check your items");
@@ -241,7 +308,6 @@ namespace VeridianPact
 
         public static void TypeWriterEffect(string text, int delay = 30)
         {
-            // Display text with typewriter effect
             foreach (char c in text)
             {
                 Console.Write(c);
@@ -252,26 +318,35 @@ namespace VeridianPact
 
         public Location GetLocation(string name)
         {
-            // Find location by name
             return locations.Find(loc => loc.Name == name) ?? currentLocation;
         }
 
         public List<Location> GetLocations()
         {
-            // Return all locations
             return locations;
         }
 
         public void SetFlag(string key, bool value)
         {
-            // Set game flag
             gameState.SetFlag(key, value);
         }
 
         public bool GetFlag(string key)
         {
-            // Get game flag
             return gameState.GetFlag(key);
+        }
+
+        // Explore limit tracking
+        private int exploreCount = 0; // track how many times explore has been used
+
+        public bool CanExplore()
+        {
+            return exploreCount < 2;
+        }
+
+        public void IncrementExplore()
+        {
+            exploreCount++;
         }
     }
 }

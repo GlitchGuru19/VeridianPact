@@ -1,3 +1,6 @@
+// Abstract base for scenes:
+// - Provides option display and validated input helpers
+
 using System;
 using System.Collections.Generic;
 
@@ -11,7 +14,6 @@ namespace VeridianPact
 
         public Scene(Game game, Player player, Location location)
         {
-            // Initialize scene
             this.game = game;
             this.player = player;
             this.location = location;
@@ -21,7 +23,6 @@ namespace VeridianPact
 
         protected void DisplayOptions(List<string> options)
         {
-            // Show numbered options
             Console.WriteLine("\nWhat do you do?");
             for (int i = 0; i < options.Count; i++)
             {
@@ -31,7 +32,6 @@ namespace VeridianPact
 
         protected int GetPlayerChoice(int maxOptions)
         {
-            // Get valid player input
             int choice;
             while (true)
             {

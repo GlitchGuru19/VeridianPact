@@ -1,3 +1,6 @@
+// Simple state container:
+// - Flag and counter dictionaries with helpers
+
 using System.Collections.Generic;
 
 namespace VeridianPact
@@ -9,7 +12,6 @@ namespace VeridianPact
 
         public GameState()
         {
-            // Initialize state containers
             flags = new Dictionary<string, bool>();
             counters = new Dictionary<string, int>();
         }
