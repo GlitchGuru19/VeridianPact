@@ -8,6 +8,7 @@ namespace VeridianPact
 {
     class OpeningScene : Scene
     {
+        // Opening scene constructor
         public OpeningScene(Game game, Player player, Location location) : base(game, player, location) { }
 
         public override void Play()
@@ -25,7 +26,9 @@ namespace VeridianPact
                 "Give Emma a quick word of advice on carrying technique"
             };
 
+            // 
             DisplayOptions(options);
+            // 
             int choice = GetPlayerChoice(options.Count);
 
             Console.Clear();
@@ -54,6 +57,8 @@ namespace VeridianPact
 
             Console.WriteLine("\nPress any key to continue...");
             Console.ReadKey(true);
+
+            Thread.Sleep(30);
 
             if(game.CanExplore())
             {

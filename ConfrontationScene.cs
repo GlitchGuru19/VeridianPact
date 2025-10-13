@@ -11,6 +11,11 @@ namespace VeridianPact
 
         public override void Play()
         {
+            // wait for 4 seconds
+            Thread.Sleep(40);
+            // Clear the screen
+            Console.Clear();
+
             if (game.GetFlag("ComfortedEmma"))
             {
                 Game.TypeWriterEffect("\"Wasting time talking instead of working?\" Victor snaps.");

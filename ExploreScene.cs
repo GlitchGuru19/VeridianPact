@@ -65,6 +65,7 @@ namespace VeridianPact
                         player.ModifyStat("Wisdom", 2);
                         player.ModifyStat("Conscience", 1);
                         game.SetFlag("ReadFerrariBook", true);
+                        Thread.Sleep(30);
                         break;
                     default:
                         Game.TypeWriterEffect("You decide not to explore further.");
